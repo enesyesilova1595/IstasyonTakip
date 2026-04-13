@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DarkOrbit İstasyon Takip</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #0a0a12; color: white; text-align: center; }
+        .container { max-width: 800px; margin: 50px auto; padding: 20px; background: #161625; border-radius: 15px; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+        h1 { color: #f39c12; text-transform: uppercase; letter-spacing: 2px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 15px; border-bottom: 1px solid #2c2c44; text-align: center; }
+        th { background: #1e1e30; color: #f39c12; }
+        .status-on { color: #2ecc71; font-weight: bold; }
+        .status-off { color: #e74c3c; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>GALAKSİ İSTASYON TAKİP SİSTEMİ</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Harita</th>
+                <th>İstasyon Adı</th>
+                <th>Kalkan Bitme Zamanı</th>
+                <th>Durum</th>
+            </tr>
+        </thead>
+        <tbody id="station-list">
+            </tbody>
+    </table>
+</div>
+
+<script>
+    // Buraya istasyon bilgilerini ekleyebilirsin
+    const stations = [
+        { map: "2-8", name: "Klan Merkezi", endTime: "2024-05-20 22:00", status: "Aktif" },
+        { map: "4-4", name: "Savaş Üssü", endTime: "2024-05-21 14:30", status: "Saldırı Altında" }
+    ];
+
+    const list = document.getElementById('station-list');
+    stations.forEach(s => {
+        list.innerHTML += `
+            <tr>
+                <td>${s.map}</td>
+                <td>${s.name}</td>
+                <td>${s.endTime}</td>
+                <td class="${s.status === 'Aktif' ? 'status-on' : 'status-off'}">${s.status}</td>
+            </tr>
+        `;
+    });
+</script>
+
+</body>
+</html>
